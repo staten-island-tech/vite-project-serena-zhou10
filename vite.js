@@ -103,7 +103,7 @@ function inject(art) {
 // users can click on an image to generate a pop-up modal to learn more information
 
 
-// upload new images (?) - what does this mean
+// upload new images (?) - what does this mean?
 
 
 // random art of the day header
