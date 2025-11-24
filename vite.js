@@ -1,3 +1,7 @@
+const gallery = document.getElementById("gallery");
+const filterSelect = document.getElementById("filterSelect");
+const imageUpload = document.getElementById("imageUpload");
+
 // preselected image gallery
 const art = [
   {
@@ -80,10 +84,56 @@ const art = [
     alt: "Moonlight, Wood Island Light",
   },
 
+  {
+    name: "Impression, Sunrise",
+    artist: "Claude Monet",
+    published: "1872",
+    img: "https://www.invaluable.com/blog/wp-content/uploads/sites/77/2021/01/Monet-Impression-Sunrise-1.jpg",
+    alt: "Impression, Sunrise",
+  },
 
+  {
+    name: "A Sunday Afternoon on the Island of La Grande Jatte",
+    artist: "Georges Seurat ",
+    published: "1884-86",
+    img: "https://www.invaluable.com/blog/wp-content/uploads/sites/77/2021/01/Georges_Seurat_-Sunday-Afternoon-on-La-Grande-Jatte-1.jpg",
+    alt: "A Sunday Afternoon on the Island of La Grande Jatte",
+  },
+
+  {
+    name: "The Water Lily Pond",
+    artist: "Claude Monet",
+    published: "1899",
+    img: "https://ccplonline.org/wp-content/uploads/2021/04/AE-25-Most-Famous-Paintings-2.png",
+    alt: "The Water Lily Pond",
+  },
+
+  {
+    name: "Paris Landscape",
+    artist: "Takanori Oguiss",
+    published: "1928",
+    img: "https://d3d00swyhr67nd.cloudfront.net/w800h800/collection/GMIII/MCAG/GMIII_MCAG_1946_36-001.jpg",
+    alt: "Paris Landscape",
+  },
+  
+  {
+    name: "The Water Lily Pond",
+    artist: "Claude Monet",
+    published: "1899",
+    img: "https://ccplonline.org/wp-content/uploads/2021/04/AE-25-Most-Famous-Paintings-2.png",
+    alt: "The Water Lily Pond",
+  },
+
+  {
+    name: "Paris Landscape",
+    artist: "Takanori Oguiss",
+    published: "1928",
+    img: "https://d3d00swyhr67nd.cloudfront.net/w800h800/collection/GMIII/MCAG/GMIII_MCAG_1946_36-001.jpg",
+    alt: "Paris Landscape",
+  },
 ];
 
-// put them on screen 
+// put them on screen
 function inject(art) {
   const container = document.querySelector(".container");
   container.insertAdjacentHTML(
@@ -98,15 +148,38 @@ function inject(art) {
 }
 
 // filter them
+function filterByCategory(category) {
+  const cards = document.querySelectorAll(".card");
 
+  cards.forEach((card) => {
+    const cardCategory = card.dataset.cat;
+    if (category === "All" || cardCategory === category) {
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+
+function setupFilterButtons() {
+  const filterButtons = document.querySelectorAll(".filtering");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const selected = event.target.textContent.trim();
+      console.log("Filtering by:", selected);
+      filterByCategory(selected);
+    });
+  });
+}
+
+setupFilterButtons();
+filterByCategory("All");
 
 // users can click on an image to generate a pop-up modal to learn more information
 
-
-// upload new images (?) - what does this mean?
-
+// upload new images (?) - what does this mean
 
 // random art of the day header
-
 
 // light/dark mode or theming in general
