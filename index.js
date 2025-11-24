@@ -1,3 +1,7 @@
+const gallery = document.getElementById("gallery");
+const filterSelect = document.getElementById("filterSelect");
+const imageUpload = document.getElementById("imageUpload");
+
 // preselected image gallery
 const art = [
   {
@@ -110,4 +114,3 @@ function inject(art) {
 
 
 // light/dark mode or theming in general
-
