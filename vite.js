@@ -2,7 +2,7 @@ const gallery = document.getElementById("gallery");
 const filterSelect = document.getElementById("filterSelect");
 const imageUpload = document.getElementById("imageUpload");
 
-// preselected image gallery
+// preselected image gallery which can be filtered or changed
 const art = [
   {
     name: "Starry Night Over the Rhone",
@@ -10,6 +10,7 @@ const art = [
     published: "1888",
     img: "https://upload.wikimedia.org/wikipedia/commons/0/01/Vincent_van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
     alt: "Starry Night Over the Rhone",
+    category: ["Post-Impressionism", "Night Scenes", "Seascapes & Water", "Cityscapes"]
   },
 
   {
@@ -18,6 +19,7 @@ const art = [
     published: "1888",
     img: "https://upload.wikimedia.org/wikipedia/commons/b/b0/Vincent_van_Gogh_%281853-1890%29_Caf%C3%A9terras_bij_nacht_%28place_du_Forum%29_Kr%C3%B6ller-M%C3%BCller_Museum_Otterlo_23-8-2016_13-35-40.JPG",
     alt: "Café Terrace at Night",
+    category: ["Post-Impressionism", "Night Scenes", "Cityscapes"]
   },
 
   {
@@ -26,6 +28,7 @@ const art = [
     published: "1889",
     img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1200px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
     alt: "Starry Night",
+    category: ["Post-Impressionism", "Night Scenes", "Landscapes"]
   },
 
   {
@@ -34,6 +37,7 @@ const art = [
     published: "1875",
     img: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Whistler-Nocturne_in_black_and_gold.jpg",
     alt: "Nocturne in Black and Gold: The Falling Rocket",
+    category: ["American Realism", "Night Scenes"]
   },
 
   {
@@ -42,6 +46,7 @@ const art = [
     published: "1877",
     img: "https://upload.wikimedia.org/wikipedia/commons/1/17/Gustave_Caillebotte_-_Paris_Street%3B_Rainy_Day_-_Google_Art_Project.jpg",
     alt: "Paris Street; Rainy Day",
+    category: ["Impressionism", "Cityscapes"]
   },
 
   {
@@ -50,6 +55,7 @@ const art = [
     published: "1928",
     img: "https://i.ebayimg.com/00/s/NjM1WDg0Mw==/z/ocIAAOSwMvpmx4Ah/$_57.JPG?set_id=880000500F",
     alt: "The Third Avenue El",
+    category: ["American Realism", "Cityscapes"]
   },
 
   {
@@ -58,6 +64,7 @@ const art = [
     published: "1929",
     img: "https://d7hftxdivxxvm.cloudfront.net/?height=640&quality=80&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F6J3_8dPB36jzLEtxLQ2rig%2Flarge.jpg&width=432",
     alt: "Hiroshige’s Night Streets and Rain Scenes",
+    category: ["Japanese Prints", "Night Scenes", "Cityscapes"]
   },
 
   {
@@ -66,6 +73,7 @@ const art = [
     published: "1926",
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSby65N7MLwQDDlSbnb2NA4uHfZTsI67bX_LQ&s",
     alt: "Glittering Sea, from The Seto Inland Sea Series",
+    category: ["Japanese Prints", "Seascapes & Water"]
   },
 
   {
@@ -74,6 +82,7 @@ const art = [
     published: "1830",
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvOEEN0Q0yo1FT1eEV6OABHyuNABr3_LzX-g&s",
     alt: "The Great Wave Off Kanagawa",
+    category: ["Japanese Prints", "Seascapes & Water"]
   },
 
   {
@@ -82,6 +91,7 @@ const art = [
     published: "1886",
     img: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11127/44025/main-image",
     alt: "Moonlight, Wood Island Light",
+    category: ["American Realism", "Night Scenes", "Seascapes & Water"]
   },
 
   {
@@ -90,6 +100,7 @@ const art = [
     published: "1872",
     img: "https://www.invaluable.com/blog/wp-content/uploads/sites/77/2021/01/Monet-Impression-Sunrise-1.jpg",
     alt: "Impression, Sunrise",
+    category: ["Impressionism", "Seascapes & Water"]
   },
 
   {
@@ -98,6 +109,7 @@ const art = [
     published: "1884-86",
     img: "https://www.invaluable.com/blog/wp-content/uploads/sites/77/2021/01/Georges_Seurat_-Sunday-Afternoon-on-La-Grande-Jatte-1.jpg",
     alt: "A Sunday Afternoon on the Island of La Grande Jatte",
+    category: ["Post-Impressionism", "Landscapes"]
   },
 
   {
@@ -106,6 +118,7 @@ const art = [
     published: "1899",
     img: "https://ccplonline.org/wp-content/uploads/2021/04/AE-25-Most-Famous-Paintings-2.png",
     alt: "The Water Lily Pond",
+    category: ["Impressionism", "Seascapes & Water", "Landscapes"]
   },
 
   {
@@ -114,22 +127,61 @@ const art = [
     published: "1928",
     img: "https://d3d00swyhr67nd.cloudfront.net/w800h800/collection/GMIII/MCAG/GMIII_MCAG_1946_36-001.jpg",
     alt: "Paris Landscape",
+    category: ["Cityscapes"]
   },
-  
+
   {
-    name: "The Water Lily Pond",
+    name: "Woman with a Parasol - Madame Monet and Her Son",
     artist: "Claude Monet",
-    published: "1899",
-    img: "https://ccplonline.org/wp-content/uploads/2021/04/AE-25-Most-Famous-Paintings-2.png",
-    alt: "The Water Lily Pond",
+    published: "1875",
+    img: "https://api.nga.gov/iiif/99758d9d-c10b-4d02-a198-7e49afb1f3a6/full/!800,800/0/default.jpg",
+    alt: "Woman with a Parasol - Madame Monet and Her Son",
+    category: ["Impressionism", "Landscapes"]
   },
 
   {
-    name: "Paris Landscape",
-    artist: "Takanori Oguiss",
-    published: "1928",
-    img: "https://d3d00swyhr67nd.cloudfront.net/w800h800/collection/GMIII/MCAG/GMIII_MCAG_1946_36-001.jpg",
-    alt: "Paris Landscape",
+    name: "Palazzo da Mula, Venice",
+    artist: "Claude Monet",
+    published: "1908",
+    img: "https://api.nga.gov/iiif/f339a180-c87a-446b-8605-060f7b53f1a3/full/!800,800/0/default.jpg",
+    alt: "Palazzo da Mula, Venice",
+    category: ["Impressionism", "Cityscapes", "Seascapes & Water"]
+  },
+
+  {
+    name: "Banks of the Seine, Vétheuil",
+    artist: "Claude Monet",
+    published: "1880",
+    img: "https://api.nga.gov/iiif/5dd2009f-7782-43d8-9892-be5733d8f43b/full/!800,800/0/default.jpg",
+    alt: "Banks of the Seine, Vétheuil",
+    category: ["Impressionism","Landscapes","Seascapes & Water"]
+  },
+
+  {
+    name: "Mortlake Terrace",
+    artist: "Joseph Mallord William Turner",
+    published: "1827",
+    img: "https://api.nga.gov/iiif/d90b641f-b6fe-4fc4-a520-69accf46513b/full/!800,800/0/default.jpg",
+    alt: "Mortlake Terrace",
+    category: ["Landscapes", "Seascapes & Water"]
+  },
+
+  {
+    name: "The Magpie",
+    artist: "Claude Monet",
+    published: "1827",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Claude_Monet_-_The_Magpie_-_Google_Art_Project.jpg/1200px-Claude_Monet_-_The_Magpie_-_Google_Art_Project.jpg",
+    alt: "The Magpie",
+    category: ["Impressionism", "Landscapes"]
+  },
+
+  {
+    name: "Snow at Argenteuil",
+    artist: "Claude Monet",
+    published: "1874-75",
+    img: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Monet_Snow_at_Argenteuil_1875.jpg",
+    alt: "Snow at Argenteuil",
+    category: ["Impressionism", "Landscapes"]
   },
 ];
 
@@ -138,7 +190,7 @@ function inject(art) {
   const container = document.querySelector(".container");
   container.insertAdjacentHTML(
     "beforeend",
-    `<div class = "card" data-cat = ${art.type}">
+    `<div class = "card" data-cat = ${art.category}">
     <img src=${art.img} alt = ${art.alt} />
      <h2>${art.name}</h2>
      <h3>$${art.artist}</h3>
@@ -149,7 +201,7 @@ function inject(art) {
 
 // filter them
 function filterByCategory(category) {
-  const cards = document.querySelectorAll(".card");
+  const cards = document.querySelectorAll(".art");
 
   cards.forEach((card) => {
     const cardCategory = card.dataset.cat;
@@ -162,7 +214,7 @@ function filterByCategory(category) {
 }
 
 function setupFilterButtons() {
-  const filterButtons = document.querySelectorAll(".filtering");
+  const filterButtons = document.querySelectorAll("filter.buttons");
 
   filterButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
@@ -177,6 +229,8 @@ setupFilterButtons();
 filterByCategory("All");
 
 // users can click on an image to generate a pop-up modal to learn more information
+// "none" -> "block"
+
 
 // upload new images (?) - what does this mean
 
