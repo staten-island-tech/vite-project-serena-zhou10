@@ -232,7 +232,7 @@ filterByCategory("All");
 // "none" -> "block"
 
 
-// upload new images (?) - what does this mean
+// upload new images
 
 // random art of the day header
 
