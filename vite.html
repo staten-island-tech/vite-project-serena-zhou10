@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Gallery</title>
 
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="vite.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -39,7 +39,27 @@
         </div>
     </div>
 
-    <script src="index.js"></script>
+    <div class="upload__section">
+        <h2>Upload Image</h2>
+        <form id="uploadForm">
+            <input type="file" name="image" required />
+            <input type="text" id="uploadName" placeholder="Name" required />
+            <input type="text" id="uploadArtist" placeholder="Artist" required />
+            <input type="text" id="uploadYear" placeholder="Year" required />
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <div class="modal">
+        <div class="modal__content">
+            <img id="modalImg" />
+            <h2 id="modalName"></h2>
+            <h3 id="modalArtist"></h3>
+            <p id="modalYear"></p>
+        </div>
+    </div>
+
+    <script src="vite.js"></script>
 </body>
 
 </html>
