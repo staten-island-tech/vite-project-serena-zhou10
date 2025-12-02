@@ -11,7 +11,7 @@ body {
   background: #f6f6ec;
   color: #12130d;
   font-size: 9px;
-  font-family: "Bodoni Moda", serif;
+  font-family: "PT Serif", serif;
   padding: 2rem;
 }
 
@@ -43,6 +43,30 @@ body {
   padding-top: 1rem;
 }
 
+.container {
+  width: 90vw;
+  background-color: #f6f6ec;
+  margin: 2.5rem auto;
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.card {
+  width: 22%;
+  height: auto;
+  background-color: #f6f6ec;
+  margin: 20px 0;
+  border-radius: 15px;
+  box-shadow: 0 1px 4px #f6f6ec;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+}
+
 /* text */
 h1 {
   font-size: 3rem;
@@ -64,11 +88,17 @@ p {
   font-style: italic;
 }
 
+/* images */
+.card img {
+  width: 100%;
+  object-fit: cover;
+}
+
 /* other */
 .filter__buttons {
   font-size: 1.5rem;
   background-color: transparent;
-  font-family: "Montserrat", sans-serif;
+  font-family: "PT Serif", serif;
   text-align: center;
   line-height: 1rem;
   margin-bottom: 0px;

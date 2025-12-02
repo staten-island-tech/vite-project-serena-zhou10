@@ -56,7 +56,7 @@ const art = [
     name: "The Third Avenue El",
     artist: "John Sloan",
     published: "1928",
-    img: "https://i.ebayimg.com/00/s/NjM1WDg0Mw==/z/ocIAAOSwMvpmx4Ah/$_57.JPG?set_id=880000500F",
+    img: "https://whitneymedia.org/assets/artwork/716/36_154_cropped.jpeg",
     alt: "The Third Avenue El",
     category: ["American Realism", "Cityscapes"],
   },
@@ -192,7 +192,7 @@ const art = [
 function inject(item) {
   const container = document.querySelector(".container");
   container.insertAdjacentHTML(
-    "afterbegin",
+    "beforeend",
     `<div class="card" data-cat="${item.category.join(", ")}">
       <img src="${item.img}" alt="${item.alt}" />
       <h2>${item.name}</h2>
