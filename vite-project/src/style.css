@@ -1,15 +1,18 @@
-:root {
-  /* Add CSS variables here if needed */
-}
-
+html,
+body,
 /* sections */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-size: 9px;
-  background-color: #f6f6ec;
+}
+
+body {
+  background: #f6f6ec;
   color: #12130d;
+  font-size: 9px;
+  font-family: "Bodoni Moda", serif;
+  padding: 2rem;
 }
 
 .filterSelect {
@@ -41,11 +44,6 @@
 }
 
 /* text */
-body {
-  font-family: "Bodoni Moda", serif;
-  padding: 2rem;
-}
-
 h1 {
   font-size: 3rem;
   font-weight: bold;

@@ -1,9 +1,4 @@
 import "./style.css";
-import { setupCounter } from "./main.js";
-
-const gallery = document.getElementById("gallery");
-const filterSelect = document.getElementById("filterSelect");
-const imageUpload = document.getElementById("imageUpload");
 
 // preselected image gallery which can be filtered or changed
 const art = [
@@ -197,24 +192,25 @@ const art = [
 function inject(item) {
   const container = document.querySelector(".container");
   container.insertAdjacentHTML(
-    "beforeend",
+    "afterbegin",
     `<div class="card" data-cat="${item.category.join(", ")}">
-    <img src=${item.img} alt = ${item.alt} />
-     <h2>${item.name}</h2>
-     <h3>${item.artist}</h3>
-     <p>${item.published}</p>
-     </div>`
+      <img src="${item.img}" alt="${item.alt}" />
+      <h2>${item.name}</h2>
+      <h3>${item.artist}</h3>
+      <p>${item.published}</p>
+    </div>`
   );
 }
-art.forEach(inject);
+art.forEach((h) => inject(h));
 
 // filter them
 function filterByCategory(category) {
   const cards = document.querySelectorAll(".card");
 
   cards.forEach((card) => {
-    const cardCategory = card.dataset.cat;
-    if (category === "All" || cardCategory === category) {
+    const categories = card.dataset.cat.split(",").map((c) => c.trim());
+
+    if (category === "All" || categories.includes(category)) {
       card.style.display = "";
     } else {
       card.style.display = "none";
