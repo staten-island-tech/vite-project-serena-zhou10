@@ -1,4 +1,7 @@
-:root 
+:root {
+  /* Add CSS variables here if needed */
+}
+
 /* sections */
 * {
   box-sizing: border-box;

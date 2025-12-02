@@ -201,8 +201,8 @@ function inject(item) {
     `<div class="card" data-cat="${item.category.join(", ")}">
     <img src=${item.img} alt = ${item.alt} />
      <h2>${item.name}</h2>
-     <h3>$${item.artist}</h3>
-     <p>$${item.published}</p>
+     <h3>${item.artist}</h3>
+     <p>${item.published}</p>
      </div>`
   );
 }
@@ -210,7 +210,7 @@ art.forEach(inject);
 
 // filter them
 function filterByCategory(category) {
-  const cards = document.querySelectorAll(".art");
+  const cards = document.querySelectorAll(".card");
 
   cards.forEach((card) => {
     const cardCategory = card.dataset.cat;
@@ -223,7 +223,7 @@ function filterByCategory(category) {
 }
 
 function setupFilterButtons() {
-  const filterButtons = document.querySelectorAll("filter.buttons");
+  const filterButtons = document.querySelectorAll(".filter__buttons");
 
   filterButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
