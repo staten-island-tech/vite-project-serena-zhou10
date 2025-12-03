@@ -237,11 +237,6 @@ filterByCategory("All");
 // "none" -> "block"
 
 // upload new images
-
-// random art of the day header
-
-// light/dark mode or theming in general
-
 export function setupCounter(element) {
   let counter = 0;
   const setCounter = (count) => {
@@ -251,3 +246,16 @@ export function setupCounter(element) {
   element.addEventListener("click", () => setCounter(counter + 1));
   setCounter(0);
 }
+
+// random art of the day header
+
+// light/dark mode or theming in general
+document.querySelector(".theme__toggle").addEventListener("click", function () {
+  if (document.body.classList.contains("cool")) {
+    document.body.classList.add("warm");
+    document.body.classList.remove("cool");
+  } else {
+    document.body.classList.add("cool");
+    document.body.classList.remove("warm");
+  }
+});
