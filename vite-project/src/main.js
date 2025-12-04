@@ -257,8 +257,8 @@ document.querySelector(".theme__toggle").addEventListener("click", function () {
     body.classList.add("warm");
     body.classList.remove("cool");
   } else {
-    body.classList.add("cool");
     body.classList.remove("warm");
+    body.classList.add("cool");
     console.log("no");
   }
 
