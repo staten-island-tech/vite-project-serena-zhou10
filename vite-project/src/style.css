@@ -1,32 +1,23 @@
 html,
 body,
 :root {
-  --cool-white: #ffffff;
-  --cool-black: #000000;
-  --warm-white: #f6f6ec;
-  --warm-black: #12130d;
+  --cool-white: #a3daff;
+  --cool-black: #00ccff;
+  --warm-white: #fdd8d8;
+  --warm-black: #ff0000;
 
   --primary: var(--warm-white);
   --secondary: var(--warm-black);
 }
 
-.cool {
-  --primary: var(--cool-white);
-  --secondary: var(--cool-black);
+body.cool {
+  --primary: var(--cool-black);
+  --secondary: var(--cool-white);
 }
 
-.warm {
+body.warm {
   --primary: var(--warm-white);
   --secondary: var(--warm-black);
-}
-
-.hero {
-  background-color: var(--primary);
-}
-
-.main {
-  background-color: var(--secondary);
-  height: 90vh;
 }
 
 /* sections */
@@ -37,11 +28,11 @@ body,
 }
 
 body {
-  background: #f6f6ec;
-  color: #12130d;
   font-size: 9px;
   font-family: "PT Serif", serif;
   padding: 2rem;
+  background: var(--primary);
+  color: var(--secondary);
 }
 
 .filterSelect {
@@ -54,8 +45,8 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: #12130d;
-  color: #f6f6ec;
+  background-color: var(--secondary);
+  color: var(--primary);
   padding-bottom: 1rem;
   padding-top: 1rem;
 }
@@ -66,15 +57,15 @@ body {
   display: flex;
   top: 0;
   z-index: 1000;
-  background-color: #efede0;
-  color: #12130d;
+  background-color: var(--primary);
+  color: var(--secondary);
   padding-bottom: 1rem;
   padding-top: 1rem;
 }
 
 .container {
   width: 90vw;
-  background-color: #f6f6ec;
+  background-color: var(--primary);
   margin: 2.5rem auto;
   display: flex;
   justify-content: center;
@@ -84,12 +75,11 @@ body {
 }
 
 .card {
-  width: 22%;
+  width: 21%;
   height: auto;
-  background-color: #f6f6ec;
+  background-color: var(--primary);
   margin: 20px 0;
   border-radius: 15px;
-  box-shadow: 0 1px 4px #f6f6ec;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -98,22 +88,22 @@ body {
 
 /* text */
 h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
-  color: #f6f6ec;
+  color: var(--primary);
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: medium;
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 p {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-style: italic;
 }
 
@@ -131,8 +121,8 @@ p {
   text-align: center;
   line-height: 1rem;
   margin-bottom: 0px;
-  border: 1px solid #12130d;
-  color: #f6f6ec;
+  border: 1px solid var(--secondary);
+  color: var(--primary);
   padding: 10px 70px;
 }
 
@@ -142,8 +132,9 @@ p {
   text-align: center;
   line-height: 1rem;
   margin-bottom: 0px;
-  color: #f6f6ec;
+  color: var(--primary);
   padding: 10px 70px;
+  background-color: #000000;
 }
 
 /* flex */

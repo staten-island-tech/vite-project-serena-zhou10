@@ -251,11 +251,16 @@ export function setupCounter(element) {
 
 // light/dark mode or theming in general
 document.querySelector(".theme__toggle").addEventListener("click", function () {
-  if (document.body.classList.contains("cool")) {
-    document.body.classList.add("warm");
-    document.body.classList.remove("cool");
+  const body = document.documentElement;
+  if (body.classList.contains("cool")) {
+    console.log("yes");
+    body.classList.add("warm");
+    body.classList.remove("cool");
   } else {
-    document.body.classList.add("cool");
-    document.body.classList.remove("warm");
+    body.classList.add("cool");
+    body.classList.remove("warm");
+    console.log("no");
   }
+
+  console.log(body.classList);
 });
