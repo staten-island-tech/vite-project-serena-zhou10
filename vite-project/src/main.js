@@ -205,8 +205,36 @@ function inject(item) {
 }
 document.addEventListener("DOMContentLoaded", () => {
   art.forEach(inject);
+  enableModal();
 });
 
+// users can click on an image to generate a pop-up modal to learn more information
+// "none" -> "block"
+function enableModal() {
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modalImg");
+  const modalName = document.getElementById("modalName");
+  const modalArtist = document.getElementById("modalArtist");
+  const modalYear = document.getElementById("modalYear");
+
+  document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", () => {
+
+      modalImg.src = card.querySelector("img").src;
+      modalName.textContent = card.querySelector("h2").textContent;
+      modalArtist.textContent = card.querySelector("h3").textContent;
+      modalYear.textContent = card.querySelector("p").textContent;
+
+      modal.classList.add("show");
+    });
+  });
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.classList.remove("show");
+    }
+  });
+}
 
 // filter them
 function filterByCategory(category) {
@@ -237,26 +265,59 @@ function setupFilterButtons() {
 setupFilterButtons();
 filterByCategory("All");
 
-// users can click on an image to generate a pop-up modal to learn more information
-// "none" -> "block"
-
 // upload new images
+const uploadForm = document.getElementById("uploadForm");
+
+uploadForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const fileInput = uploadForm.querySelector('input[type="file"]');
+  const name = document.getElementById("uploadName").value;
+  const artist = document.getElementById("uploadArtist").value;
+  const year = document.getElementById("uploadYear").value;
+
+  const file = fileInput.files[0];
+  if (!file) return alert("Please select an image");
+
+  const imgUrl = URL.createObjectURL(file);
+
+  const newArt = {
+    name: name,
+    artist: artist,
+    published: year,
+    img: imgUrl,
+    alt: name,
+    category: ["User Upload"],
+  };
+  art.push(newArt);
+  inject(newArt);
+  enableModal();
+  saveUploads();
+  uploadForm.reset();
+});
 
 // random art of the day header
+function randomArtOfTheDay() {
+  const artOfDayImg = document.getElementById("artofDayImg");
+  const artOfDayName = document.getElementById("artofDayName");
+  const artOfDayArtist = document.getElementById("artofDayArtist");
 
-// light/dark mode or theming in general
+  const randomIndex = Math.floor(Math.random() * art.length);
+  const artItem = art[randomIndex];
 
-export function setupCounter(element) {
-  let counter = 0;
-  const setCounter = (count) => {
-    counter = count;
-    element.innerHTML = `count is ${counter}`;
-  };
-  element.addEventListener("click", () => setCounter(counter + 1));
-  setCounter(0);
+  artOfDayImg.src = artItem.img;
+  artOfDayImg.alt = artItem.alt;
+  artOfDayName.textContent = artItem.name;
+  artOfDayArtist.textContent = `by ${artItem.artist}`;
 }
 
-// random art of the day header
+document.addEventListener("DOMContentLoaded", () => {
+  art.forEach(inject);
+  enableModal();
+  randomArtOfTheDay();
+});
+
+
 
 // light/dark mode or theming in general
 document.querySelector(".theme__toggle").addEventListener("click", function () {
