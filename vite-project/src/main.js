@@ -83,7 +83,7 @@ const art = [
     name: "The Great Wave Off Kanagawa",
     artist: "Hokusai",
     published: "1830",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvOEEN0Q0yo1FT1eEV6OABHyuNABr3_LzX-g&s",
+    img: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Tsunami_by_hokusai_19th_century.jpg",
     alt: "The Great Wave Off Kanagawa",
     category: ["Japanese Prints", "Seascapes & Water"],
   },
@@ -189,7 +189,6 @@ const art = [
 ];
 
 // put them on screen
-
 function inject(item) {
   const container = document.querySelector(".container");
   container.insertAdjacentHTML(
@@ -197,19 +196,21 @@ function inject(item) {
     `<div class="card" data-cat="${item.category.join(", ")}">
       <img src="${item.img}" alt="${item.alt}" />
       <h2>${item.name}</h2>
-
-     <h3>${item.artist}</h3>
-     <p>${item.published}</p>
+      <h3>${item.artist}</h3>
+      <p>${item.published}</p>
      </div>`
   );
 }
+
 document.addEventListener("DOMContentLoaded", () => {
   art.forEach(inject);
   enableModal();
+  setupFilterButtons();
+  randomArtOfTheDay();
+  filterByCategory("All");
 });
 
-// users can click on an image to generate a pop-up modal to learn more information
-// "none" -> "block"
+//modal for more details on click
 function enableModal() {
   const modal = document.getElementById("modal");
   const modalImg = document.getElementById("modalImg");
@@ -235,12 +236,12 @@ function enableModal() {
   });
 }
 
-// filter them
+// filter function
 function filterByCategory(category) {
   const cards = document.querySelectorAll(".card");
   cards.forEach((card) => {
     const cardCategory = card.dataset.cat;
-    if (category === "All" || cardCategory === category) {
+    if (category === "All" || cardCategory.includes(category)) {
       card.style.display = "";
     } else {
       card.style.display = "none";
@@ -248,19 +249,22 @@ function filterByCategory(category) {
   });
 }
 
+// setup filter buttons
 function setupFilterButtons() {
   const filterButtons = document.querySelectorAll(".filter__buttons");
+  
   filterButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      
+      event.target.classList.add("active");
+
       const selected = event.target.textContent.trim();
       console.log("Filtering by:", selected);
       filterByCategory(selected);
     });
   });
 }
-
-setupFilterButtons();
-filterByCategory("All");
 
 // upload new images
 const uploadForm = document.getElementById("uploadForm");
@@ -297,13 +301,10 @@ function randomArtOfTheDay() {
   artOfDayImg.src = artItem.img;
   artOfDayImg.alt = artItem.alt;
 }
-enableModal();
-randomArtOfTheDay();
 
-// light/dark mode or theming in general
+// light/dark mode toggle
 document.querySelector(".theme__toggle").addEventListener("click", function () {
   const body = document.body;
-
   if (body.classList.contains("cool")) {
     body.classList.add("warm");
     body.classList.remove("cool");
@@ -311,6 +312,5 @@ document.querySelector(".theme__toggle").addEventListener("click", function () {
     body.classList.remove("warm");
     body.classList.add("cool");
   }
-
   console.log(body.classList);
 });
