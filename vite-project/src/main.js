@@ -56,7 +56,7 @@ const art = [
     name: "The Third Avenue El",
     artist: "John Sloan",
     published: "1928",
-    img: "https://i.ebayimg.com/00/s/NjM1WDg0Mw==/z/ocIAAOSwMvpmx4Ah/$_57.JPG?set_id=880000500F",
+    img: "https://whitneymedia.org/assets/artwork/716/36_154_cropped.jpeg",
     alt: "The Third Avenue El",
     category: ["American Realism", "Cityscapes"],
   },
@@ -238,7 +238,6 @@ function enableModal() {
 // filter them
 function filterByCategory(category) {
   const cards = document.querySelectorAll(".card");
-
   cards.forEach((card) => {
     const cardCategory = card.dataset.cat;
     if (category === "All" || cardCategory === category) {
@@ -251,7 +250,6 @@ function filterByCategory(category) {
 
 function setupFilterButtons() {
   const filterButtons = document.querySelectorAll(".filter__buttons");
-
   filterButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       const selected = event.target.textContent.trim();
@@ -269,17 +267,13 @@ const uploadForm = document.getElementById("uploadForm");
 
 uploadForm.addEventListener("submit", function (event) {
   event.preventDefault();
-
   const fileInput = uploadForm.querySelector('input[type="file"]');
   const name = document.getElementById("uploadName").value;
   const artist = document.getElementById("uploadArtist").value;
   const year = document.getElementById("uploadYear").value;
-
   const file = fileInput.files[0];
   if (!file) return alert("Please select an image");
-
   const imgUrl = URL.createObjectURL(file);
-
   const newArt = {
     name: name,
     artist: artist,
@@ -298,17 +292,13 @@ uploadForm.addEventListener("submit", function (event) {
 // random art of the day header
 function randomArtOfTheDay() {
   const artOfDayImg = document.getElementById("artofDayImg");
-  const artOfDayName = document.getElementById("artofDayName");
-  const artOfDayArtist = document.getElementById("artofDayArtist");
-
   const randomIndex = Math.floor(Math.random() * art.length);
   const artItem = art[randomIndex];
-
   artOfDayImg.src = artItem.img;
   artOfDayImg.alt = artItem.alt;
-  artOfDayName.textContent = artItem.name;
-  artOfDayArtist.textContent = `by ${artItem.artist}`;
 }
+enableModal();
+randomArtOfTheDay();
 
 // light/dark mode or theming in general
 document.querySelector(".theme__toggle").addEventListener("click", function () {

@@ -30,14 +30,13 @@ body.warm {
 body {
   font-size: 9px;
   font-family: "PT Serif", serif;
-  padding: 2rem;
   background: var(--primary);
   color: var(--secondary);
 }
 
 .filterSelect {
-  width: 100%;
-  margin: 4rem auto;
+  width: 100vw;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,7 +51,7 @@ body {
 }
 
 .artofDay__container {
-  width: 100%;
+  width: 90%;
   margin: 4rem auto;
   display: flex;
   top: 0;
@@ -88,7 +87,13 @@ body {
 
 /* text */
 .title {
-  align-content: center;
+  margin: 2.5rem auto;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 400px;
 }
 
 h1 {
@@ -99,6 +104,8 @@ h1 {
 h2 {
   font-size: 1.5rem;
   font-weight: medium;
+  margin: 0;
+  padding: 0;
 }
 
 h3 {
@@ -145,7 +152,7 @@ p {
   font-family: "PT Serif", serif;
   margin: 4rem auto;
   padding: 2rem 0;
-  width: 100%;
+  width: 90%;
 }
 
 .upload__section h2 {
@@ -261,15 +268,16 @@ p {
   max-width: 100%;
   height: auto;
   display: block;
-  margin: 1rem auto;
-  border-radius: 8px;
+  margin: 1px auto;
 }
 
-.artofDay__container p {
-  text-align: center;
-  margin: 0.2rem 0;
-  font-size: 1rem;
+.artofDay__container {
+  width: 100%;
+  height: auto;
+  background: var(--primary);
   color: var(--secondary);
+  align-items: center;
+
 }
 
 /* flex */
