@@ -217,9 +217,8 @@ function enableModal() {
   const modalArtist = document.getElementById("modalArtist");
   const modalYear = document.getElementById("modalYear");
 
-  document.querySelectorAll(".card").forEach(card => {
+  document.querySelectorAll(".card").forEach((card) => {
     card.addEventListener("click", () => {
-
       modalImg.src = card.querySelector("img").src;
       modalName.textContent = card.querySelector("h2").textContent;
       modalArtist.textContent = card.querySelector("h3").textContent;
@@ -310,14 +309,6 @@ function randomArtOfTheDay() {
   artOfDayName.textContent = artItem.name;
   artOfDayArtist.textContent = `by ${artItem.artist}`;
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  art.forEach(inject);
-  enableModal();
-  randomArtOfTheDay();
-});
-
-
 
 // light/dark mode or theming in general
 document.querySelector(".theme__toggle").addEventListener("click", function () {
