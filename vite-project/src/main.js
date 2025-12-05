@@ -1,9 +1,4 @@
 import "./style.css";
-import { setupCounter } from "./main.js";
-
-const gallery = document.getElementById("gallery");
-const filterSelect = document.getElementById("filterSelect");
-const imageUpload = document.getElementById("imageUpload");
 
 // preselected image gallery which can be filtered or changed
 const art = [
@@ -194,13 +189,15 @@ const art = [
 ];
 
 // put them on screen
+
 function inject(item) {
   const container = document.querySelector(".container");
   container.insertAdjacentHTML(
     "beforeend",
     `<div class="card" data-cat="${item.category.join(", ")}">
-    <img src=${item.img} alt = ${item.alt} />
-     <h2>${item.name}</h2>
+      <img src="${item.img}" alt="${item.alt}" />
+      <h2>${item.name}</h2>
+
      <h3>${item.artist}</h3>
      <p>${item.published}</p>
      </div>`
