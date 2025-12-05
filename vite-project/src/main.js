@@ -260,15 +260,14 @@ export function setupCounter(element) {
 
 // light/dark mode or theming in general
 document.querySelector(".theme__toggle").addEventListener("click", function () {
-  const body = document.documentElement;
+  const body = document.body;
+
   if (body.classList.contains("cool")) {
-    console.log("yes");
     body.classList.add("warm");
     body.classList.remove("cool");
   } else {
     body.classList.remove("warm");
     body.classList.add("cool");
-    console.log("no");
   }
 
   console.log(body.classList);
