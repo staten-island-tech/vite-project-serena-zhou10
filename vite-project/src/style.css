@@ -25,14 +25,14 @@ body.warm {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-size: 9px;
 }
 
 body {
-  font-size: 9px;
-  font-family: "PT Serif", serif;
+  font-family: "Bodoni Moda", serif;
   padding: 2rem;
-  background: var(--primary);
-  color: var(--secondary);
+  background-color: #f6f6ec;
+  color: #12130d;
 }
 
 .filterSelect {
@@ -45,8 +45,8 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: var(--secondary);
-  color: var(--primary);
+  background-color: #12130d;
+  color: #f6f6ec;
   padding-bottom: 1rem;
   padding-top: 1rem;
 }
@@ -57,84 +57,49 @@ body {
   display: flex;
   top: 0;
   z-index: 1000;
-  background-color: var(--primary);
-  color: var(--secondary);
+  background-color: #efede0;
+  color: #12130d;
   padding-bottom: 1rem;
   padding-top: 1rem;
 }
 
-.container {
-  width: 90vw;
-  background-color: var(--primary);
-  margin: 2.5rem auto;
-  display: flex;
-  justify-content: center;
-  gap: 5rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.card {
-  width: 21%;
-  height: auto;
-  background-color: var(--primary);
-  margin: 20px 0;
-  border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-bottom: 2rem;
-}
-
 /* text */
+body {
+  font-family: "Bodoni Moda", serif;
+  padding: 2rem;
+}
+
 h1 {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
-  color: var(--primary);
+  color: #f6f6ec;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: medium;
 }
 
 h3 {
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-style: italic;
 }
 
-/* images */
-.card img {
-  width: 100%;
-  object-fit: cover;
-}
-
-/* buttons */
+/* other */
 .filter__buttons {
   font-size: 1.5rem;
   background-color: transparent;
-  font-family: "PT Serif", serif;
+  font-family: "Montserrat", sans-serif;
   text-align: center;
   line-height: 1rem;
   margin-bottom: 0px;
-  border: 1px solid var(--secondary);
-  color: var(--primary);
+  border: 1px solid #12130d;
+  color: #f6f6ec;
   padding: 10px 70px;
-}
-
-.theme__toggle {
-  font-size: 1.5rem;
-  font-family: "PT Serif", serif;
-  text-align: center;
-  line-height: 1rem;
-  margin-bottom: 0px;
-  color: var(--primary);
-  padding: 10px 70px;
-  background-color: #000000;
 }
 
 /* flex */

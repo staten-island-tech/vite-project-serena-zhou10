@@ -1,4 +1,9 @@
 import "./style.css";
+import { setupCounter } from "./main.js";
+
+const gallery = document.getElementById("gallery");
+const filterSelect = document.getElementById("filterSelect");
+const imageUpload = document.getElementById("imageUpload");
 
 // preselected image gallery which can be filtered or changed
 const art = [
@@ -56,7 +61,7 @@ const art = [
     name: "The Third Avenue El",
     artist: "John Sloan",
     published: "1928",
-    img: "https://whitneymedia.org/assets/artwork/716/36_154_cropped.jpeg",
+    img: "https://i.ebayimg.com/00/s/NjM1WDg0Mw==/z/ocIAAOSwMvpmx4Ah/$_57.JPG?set_id=880000500F",
     alt: "The Third Avenue El",
     category: ["American Realism", "Cityscapes"],
   },
@@ -194,23 +199,25 @@ function inject(item) {
   container.insertAdjacentHTML(
     "beforeend",
     `<div class="card" data-cat="${item.category.join(", ")}">
-      <img src="${item.img}" alt="${item.alt}" />
-      <h2>${item.name}</h2>
-      <h3>${item.artist}</h3>
-      <p>${item.published}</p>
-    </div>`
+    <img src=${item.img} alt = ${item.alt} />
+     <h2>${item.name}</h2>
+     <h3>${item.artist}</h3>
+     <p>${item.published}</p>
+     </div>`
   );
 }
-art.forEach((h) => inject(h));
+document.addEventListener("DOMContentLoaded", () => {
+  art.forEach(inject);
+});
+
 
 // filter them
 function filterByCategory(category) {
   const cards = document.querySelectorAll(".card");
 
   cards.forEach((card) => {
-    const categories = card.dataset.cat.split(",").map((c) => c.trim());
-
-    if (category === "All" || categories.includes(category)) {
+    const cardCategory = card.dataset.cat;
+    if (category === "All" || cardCategory === category) {
       card.style.display = "";
     } else {
       card.style.display = "none";
@@ -237,6 +244,11 @@ filterByCategory("All");
 // "none" -> "block"
 
 // upload new images
+
+// random art of the day header
+
+// light/dark mode or theming in general
+
 export function setupCounter(element) {
   let counter = 0;
   const setCounter = (count) => {
