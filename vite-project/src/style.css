@@ -2,8 +2,8 @@ html,
 body,
 :root {
   --dark-white: #f6f6ec;
-  --dark-black: #171712;
-  --dark-gray: #181816;
+  --dark-gray: #171712;
+  --dark-black: #000000;
   --light-white: #f6f6ec;
   --light-black: #171712;
   --light-beige: #efede0;
@@ -14,9 +14,9 @@ body,
 }
 
 body.cool {
-  --primary: var(--dark-black);
+  --primary: var(--dark-gray);
   --secondary: var(--dark-white);
-  --tertiary: var(--dark-gray);
+  --tertiary: var(--dark-black);
 }
 
 body.warm {
